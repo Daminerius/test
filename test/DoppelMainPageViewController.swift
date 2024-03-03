@@ -1,14 +1,14 @@
 //
-//  ViewController.swift
+//  DoppelMainPageViewController.swift
 //  test
 //
-//  Created by Mac mini on 09.01.2024.
+//  Created by Mac mini on 03.03.2024.
 //
-
+import Foundation
 import UIKit
 
 
-class MainPageViewController: UIViewController {
+class DoppelMainPageViewController: UIViewController {
     
     var isLiked: Bool = false
     
@@ -81,13 +81,13 @@ class MainPageViewController: UIViewController {
         return button
     }()
     
-    private let switchToDoppelButton: UIButton = {
+    private let switchToHomeButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .systemGreen
+        button.backgroundColor = .systemRed
         button.layer.cornerRadius = 10
         button.tintColor = .white
-        button.setTitle("To doppel", for: .normal)
+        button.setTitle("To home", for: .normal)
         
         return button
     }()
@@ -135,10 +135,10 @@ class MainPageViewController: UIViewController {
         self.shareButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
         self.shareButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
-        self.switchToDoppelButton.topAnchor.constraint(equalTo: photoImageView.bottomAnchor, constant: 12).isActive = true
-        self.switchToDoppelButton.leadingAnchor.constraint(equalTo: shareButton.trailingAnchor, constant: 16).isActive = true
-        self.switchToDoppelButton.widthAnchor.constraint(greaterThanOrEqualToConstant: 50).isActive = true
-        self.switchToDoppelButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        self.switchToHomeButton.topAnchor.constraint(equalTo: photoImageView.bottomAnchor, constant: 12).isActive = true
+        self.switchToHomeButton.leadingAnchor.constraint(equalTo: shareButton.trailingAnchor, constant: 16).isActive = true
+        self.switchToHomeButton.widthAnchor.constraint(greaterThanOrEqualToConstant: 50).isActive = true
+        self.switchToHomeButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
     }
     
     
@@ -150,14 +150,14 @@ class MainPageViewController: UIViewController {
         view.addSubview(dateLabel)
         view.addSubview(likeButton)
         view.addSubview(shareButton)
-        view.addSubview(switchToDoppelButton)
+        view.addSubview(switchToHomeButton)
     }
     
     
     func setupActions() {
         likeButton.addTarget(self, action: #selector(onLikeButtonTap), for: .touchUpInside)
         shareButton.addTarget(self, action: #selector(onShareButtonTap), for: .touchUpInside)
-        switchToDoppelButton.addTarget(self, action: #selector(onSwitchToDoppelButtonTap), for: .touchUpInside)
+        
         
     }
     
@@ -185,12 +185,9 @@ class MainPageViewController: UIViewController {
             likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             likeButton.setTitle("1", for: .normal)
         }
-    }
-    
-    @objc func onSwitchToDoppelButtonTap() {
-        let doppelMainPageViewController = DoppelMainPageViewController()
-        navigationController?.pushViewController(doppelMainPageViewController, animated: true)
+            
+        
+        
     }
 
 }
-
